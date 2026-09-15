@@ -1,35 +1,42 @@
 import { useEffect, useRef, useState } from 'react';
 
+const projectImage = (name: string) => `${import.meta.env.BASE_URL}images/projects/${name}`;
+
 const SERVICES = [
   {
     num: '01',
     title: 'Электромонтажные работы',
     desc: 'Состав и объём электромонтажных работ уточняются по проекту, техническому заданию и условиям объекта.',
-    img: 'https://images.unsplash.com/photo-1770838773181-e1b17ec22fee?w=1200&h=900&fit=crop&auto=format&q=85',
+    img: projectImage('service-electrical.webp'),
+    position: '50% 62%',
   },
   {
     num: '02',
     title: 'Прокладка кабеля',
     desc: 'Прокладка кабельных линий. Способ и маршрут согласовываются для каждого объекта.',
-    img: 'https://images.unsplash.com/photo-1563456020978-5a5eb63ce380?w=1200&h=900&fit=crop&auto=format&q=85',
+    img: projectImage('service-cable-route.webp'),
+    position: '50% 66%',
   },
   {
     num: '03',
     title: 'Установка муфт',
     desc: 'Установка кабельных муфт с подбором решения под конкретную задачу и исходные данные.',
-    img: 'https://images.unsplash.com/photo-1785682117481-8e7121f49a57?w=1200&h=900&fit=crop&auto=format&q=85',
+    img: projectImage('service-joints.webp'),
+    position: '50% 68%',
   },
   {
     num: '04',
     title: 'Монтаж подстанций',
     desc: 'Монтаж подстанций в составе согласованного объёма работ по объекту.',
-    img: 'https://images.unsplash.com/photo-1509390221805-d1c887a72a00?w=1200&h=900&fit=crop&auto=format&q=85',
+    img: projectImage('service-substation.webp'),
+    position: '50% 44%',
   },
   {
     num: '05',
     title: 'Благоустройство',
     desc: 'Благоустройство и восстановление территории после выполнения работ.',
-    img: 'https://images.unsplash.com/photo-1509390673020-a5b2450e33f1?w=1200&h=900&fit=crop&auto=format&q=85',
+    img: projectImage('service-earthworks.webp'),
+    position: '54% 56%',
   },
 ];
 
@@ -152,7 +159,7 @@ function Hero() {
   return (
     <header id="top" className="hero">
       <div className="hero__media" aria-hidden="true">
-        <img src="https://images.unsplash.com/photo-1509390144018-eeaf65052242?w=1920&h=1200&fit=crop&auto=format&q=88" alt="" />
+        <img src={projectImage('hero-substation.webp')} alt="" />
       </div>
       <div className="hero__grid" aria-hidden="true" />
       <CableRoute />
@@ -215,8 +222,8 @@ function Services() {
                     <span className="service__plus" aria-hidden="true">{isActive ? '−' : '+'}</span>
                   </button>
                   <div className="service__mobile-media" aria-hidden={!isActive}>
-                    <img src={service.img} alt={'Иллюстрация направления: ' + service.title} loading="lazy" />
-                    <span>Иллюстративное изображение</span>
+                    <img src={service.img} style={{ objectPosition: service.position }} alt={'Фото с объекта: ' + service.title} loading="lazy" />
+                    <span>Фото с объекта</span>
                   </div>
                 </article>
               );
@@ -226,8 +233,8 @@ function Services() {
           <div className="services-media" aria-live="polite">
             {SERVICES.map((service, index) => (
               <figure className={active === index ? 'is-active' : ''} key={service.num}>
-                <img src={service.img} alt={'Иллюстрация направления: ' + service.title} loading={index === 0 ? 'eager' : 'lazy'} />
-                <figcaption><span>{service.num} / 05</span> Иллюстративное изображение</figcaption>
+                <img src={service.img} style={{ objectPosition: service.position }} alt={'Фото с объекта: ' + service.title} loading={index === 0 ? 'eager' : 'lazy'} />
+                <figcaption><span>{service.num} / 05</span> Реальный объект</figcaption>
               </figure>
             ))}
           </div>
@@ -238,8 +245,8 @@ function Services() {
             {SERVICES.map((service) => (
               <article className="services-mobile__card" key={service.num}>
                 <figure>
-                  <img src={service.img} alt={'Иллюстрация направления: ' + service.title} loading="lazy" />
-                  <figcaption><span>{service.num} / 05</span> Иллюстративное изображение</figcaption>
+                  <img src={service.img} style={{ objectPosition: service.position }} alt={'Фото с объекта: ' + service.title} loading="lazy" />
+                  <figcaption><span>{service.num} / 05</span> Реальный объект</figcaption>
                 </figure>
                 <div className="services-mobile__copy">
                   <span>{service.num}</span>
@@ -272,8 +279,8 @@ function About() {
       <div ref={ref} className={'shell about inview-group ' + (visible ? 'is-visible' : '')}>
         <div className="about__visual">
           <div className="about__photo">
-            <img src="https://images.unsplash.com/photo-1694521787193-9293daeddbaa?w=1400&h=1050&fit=crop&auto=format&q=86" alt="Иллюстрация электромонтажных работ" loading="lazy" />
-            <span>Иллюстративное изображение</span>
+            <img src={projectImage('about-cable.webp')} alt="Кабель на барабане на объекте" loading="lazy" />
+            <span>Фото с объекта</span>
           </div>
           <div className="about__index" aria-hidden="true">02</div>
         </div>
@@ -281,7 +288,7 @@ function About() {
         <div className="about__content">
           <SectionHeading kicker="02 — О компании">Только<br />проверенные<br />данные.</SectionHeading>
           <p className="about__lead">ООО «СКСМонт» выполняет электромонтажные и сопутствующие работы в Санкт-Петербурге и Ленинградской области.</p>
-          <p className="about__note">Здесь указана только подтверждённая информация. Дополнительные сведения, документы и примеры объектов добавим после согласования.</p>
+          <p className="about__note">На сайте представлены реальные фотографии с объектов. Дополнительные сведения и документы предоставим после согласования.</p>
           <dl className="company-details">
             {details.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
           </dl>
