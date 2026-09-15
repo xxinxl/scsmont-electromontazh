@@ -135,6 +135,7 @@
 
 # Sites source storage accepts the social preview as a regular Git object.
 public/og.png         -filter -diff -merge binary
+public/images/projects/*.webp -filter -diff -merge binary
 
 # ---------------------------------------------------------------------------
 # CAD & Scientific
