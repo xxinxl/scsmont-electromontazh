@@ -11,7 +11,11 @@ export default defineConfig(({ mode }) => {
   const emitSourcemaps = mode === 'development'
 
   return {
-    base: process.env.FIGMA_PUBLIC_URL ? `${process.env.FIGMA_PUBLIC_URL}/` : '/',
+    base: process.env.GITHUB_PAGES === 'true'
+      ? '/scsmont-electromontazh/'
+      : process.env.FIGMA_PUBLIC_URL
+        ? `${process.env.FIGMA_PUBLIC_URL}/`
+        : '/',
     build: {
       outDir: 'dist/client',
       emptyOutDir: true,

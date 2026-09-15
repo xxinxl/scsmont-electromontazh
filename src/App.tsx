@@ -232,6 +232,27 @@ function Services() {
             ))}
           </div>
         </div>
+
+        <div className="services-mobile" aria-label="Галерея услуг">
+          <div className="services-mobile__track" tabIndex={0}>
+            {SERVICES.map((service) => (
+              <article className="services-mobile__card" key={service.num}>
+                <figure>
+                  <img src={service.img} alt={'Иллюстрация направления: ' + service.title} loading="lazy" />
+                  <figcaption><span>{service.num} / 05</span> Иллюстративное изображение</figcaption>
+                </figure>
+                <div className="services-mobile__copy">
+                  <span>{service.num}</span>
+                  <h3>{service.title}</h3>
+                  <p>{service.desc}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="services-mobile__hint" aria-hidden="true">
+            <span>Свайп</span><i /><b>→</b>
+          </div>
+        </div>
       </div>
     </section>
   );
