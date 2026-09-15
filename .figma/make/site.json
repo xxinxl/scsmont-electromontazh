@@ -1,0 +1,15 @@
+{
+  "title": "СКСМонт — электромонтажные работы",
+  "description": "Электромонтажные работы, прокладка кабеля, установка муфт, монтаж подстанций и благоустройство в Санкт-Петербурге и Ленинградской области.",
+  "language": "ru",
+  "openGraph": {
+    "image": "/og.png"
+  },
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": true,
+    "ignoreReducedMotion": false
+  }
+}
