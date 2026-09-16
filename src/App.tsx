@@ -36,10 +36,10 @@ const SERVICES = [
 ];
 
 const COOPERATION = [
-  { title: 'Генподрядчикам', desc: 'Подключаемся к проектам в качестве подрядчика по электромонтажным и кабельным работам.' },
-  { title: 'Строительным компаниям', desc: 'Выполняем электромонтаж, прокладку кабеля, монтаж подстанций и благоустройство.' },
-  { title: 'Заказчикам объектов', desc: 'Принимаем проект или техническое задание и готовим предложение по работам.' },
-  { title: 'Поставщикам и партнёрам', desc: 'Рассматриваем предложения о сотрудничестве по профильным проектам в регионе.' },
+  { title: 'Генподрядчикам', desc: 'Подключаемся к проектам в качестве подрядчика по электромонтажным и кабельным работам.', img: projectImage('service-substation.webp'), alt: 'Монтаж подстанции на объекте', position: '50% 44%' },
+  { title: 'Строительным компаниям', desc: 'Выполняем электромонтаж, прокладку кабеля, монтаж подстанций и благоустройство.', img: projectImage('service-cable-route.webp'), alt: 'Прокладка кабельной линии на строительном объекте', position: '50% 66%' },
+  { title: 'Заказчикам объектов', desc: 'Принимаем проект или техническое задание и готовим предложение по работам.', img: projectImage('service-electrical.webp'), alt: 'Электромонтажные работы на объекте', position: '50% 62%' },
+  { title: 'Поставщикам и партнёрам', desc: 'Рассматриваем предложения о сотрудничестве по профильным проектам.', img: projectImage('about-cable.webp'), alt: 'Кабель на барабане на объекте', position: '50% 50%' },
 ];
 
 const PROCESS = [
@@ -161,9 +161,9 @@ function Hero() {
 
       <div className="hero__content shell">
         <div className="hero__eyebrow reveal reveal--one">
-          <span /> ООО «СКСМонт» <b>СПб / Ленобласть</b>
+          <span /> ООО «СКСМонт»
         </div>
-        <h1 className="hero__title reveal reveal--two">Монтаж.<br />Кабель.<br /><em>Подстанции.</em></h1>
+        <h1 className="hero__title reveal reveal--two">Монтаж<br />Кабель<br /><em>Подстанции</em></h1>
         <div className="hero__bottom reveal reveal--three">
           <p>Электромонтажные работы, прокладка кабеля, установка муфт, монтаж подстанций и благоустройство.</p>
           <div className="hero__actions">
@@ -198,8 +198,8 @@ function Services() {
     <section id="services" className="section section--dark">
       <div ref={ref} className={'shell inview-group ' + (visible ? 'is-visible' : '')}>
         <div className="section-intro">
-          <SectionHeading kicker="Услуги" light>Пять направлений.<br />Один подрядчик.</SectionHeading>
-          <p>Комплекс электромонтажных и кабельных работ для объектов в Санкт-Петербурге и Ленинградской области.</p>
+          <SectionHeading kicker="Услуги" light>Пять направлений<br />Один подрядчик</SectionHeading>
+          <p>Электромонтаж, кабельные линии, подстанции и восстановление территории в рамках одного проекта.</p>
         </div>
 
         <div className="services-layout">
@@ -262,7 +262,6 @@ function About() {
     ['Компания', 'ООО «СКСМонт»'],
     ['ИНН', '7810649251'],
     ['ОГРН', '1177847041932'],
-    ['География', 'Санкт-Петербург и Ленинградская область'],
   ];
 
   return (
@@ -275,8 +274,8 @@ function About() {
         </div>
 
         <div className="about__content">
-          <SectionHeading kicker="О компании">Электромонтаж<br />для объектов<br />региона.</SectionHeading>
-          <p className="about__lead">ООО «СКСМонт» выполняет электромонтажные и сопутствующие работы в Санкт-Петербурге и Ленинградской области.</p>
+          <SectionHeading kicker="О компании">Электромонтаж<br />для объектов<br />региона</SectionHeading>
+          <p className="about__lead">ООО «СКСМонт» выполняет электромонтажные и кабельные работы для строительных и промышленных объектов.</p>
           <dl className="company-details">
             {details.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
           </dl>
@@ -293,13 +292,14 @@ function Cooperation() {
     <section id="cooperation" className="section section--navy">
       <div ref={ref} className={'shell inview-group ' + (visible ? 'is-visible' : '')}>
         <div className="section-intro section-intro--cooperation">
-          <SectionHeading kicker="Сотрудничество" light>Работаем<br />с бизнесом.</SectionHeading>
-          <p>Берём в работу проекты в Санкт-Петербурге и Ленинградской области.</p>
+          <SectionHeading kicker="Сотрудничество" light>Работаем<br />с бизнесом</SectionHeading>
+          <p>Подключаемся к проектам генподрядчиков, строительных компаний и заказчиков объектов.</p>
         </div>
         <div className="cooperation-grid">
           {COOPERATION.map((item) => (
             <article key={item.title}>
-              <h3>{item.title}</h3><p>{item.desc}</p><div aria-hidden="true">↗</div>
+              <img className="cooperation-card__image" src={item.img} alt={item.alt} style={{ objectPosition: item.position }} loading="lazy" />
+              <div className="cooperation-card__content"><h3>{item.title}</h3><p>{item.desc}</p></div>
             </article>
           ))}
         </div>
@@ -315,12 +315,16 @@ function Process() {
     <section className="section section--warm">
       <div ref={ref} className={'shell inview-group ' + (visible ? 'is-visible' : '')}>
         <div className="process-heading">
-          <SectionHeading kicker="Начало работы">От заявки<br />к объекту.</SectionHeading>
+          <SectionHeading kicker="Начало работы">От заявки<br />к объекту</SectionHeading>
         </div>
         <div className="process-grid">
           {PROCESS.map((step, index) => (
             <article key={step.title}>
-              <div><span />{index + 1}</div><h3>{step.title}</h3><p>{step.desc}</p>
+              <div className="process-grid__indicator" aria-hidden="true">
+                <span className="process-grid__marker"><span /></span>
+                <span className="process-grid__number">{String(index + 1).padStart(2, '0')}</span>
+              </div>
+              <h3>{step.title}</h3><p>{step.desc}</p>
             </article>
           ))}
         </div>
@@ -337,21 +341,18 @@ function Contact() {
       <div className="contact__grid" aria-hidden="true" />
       <div ref={ref} className={'shell contact__content inview-group ' + (visible ? 'is-visible' : '')}>
         <span className="contact__kicker">Контакты</span>
-        <h2>Давайте<br /><em>обсудим</em><br />объект.</h2>
+        <h2>Давайте<br /><em>обсудим</em><br />объект</h2>
         <div className="contact__bottom">
           <div className="contact__info">
-            <p>Работаем в Санкт-Петербурге и Ленинградской области.</p>
-            <dl>
-              <div><dt>Регион</dt><dd>Санкт-Петербург и Ленинградская область</dd></div>
-            </dl>
+            <p>Опишите объект, объём работ или задачу, которую хотите обсудить.</p>
           </div>
           <form className="contact-form" onSubmit={(event) => event.preventDefault()} aria-describedby="form-status">
             <div className="contact-form__row">
-              <label>Ваше имя<input type="text" name="name" placeholder="Имя и фамилия" disabled /></label>
-              <label>Компания<input type="text" name="company" placeholder="Название организации" disabled /></label>
+              <label>Ваше имя<input type="text" name="name" autoComplete="name" placeholder="Имя и фамилия" /></label>
+              <label>Компания<input type="text" name="company" autoComplete="organization" placeholder="Название организации" /></label>
             </div>
-            <label>Телефон<input type="tel" name="phone" placeholder="+7 (___) ___-__-__" disabled /></label>
-            <label>Задача<textarea name="message" rows={3} placeholder="Кратко опишите объект или вид работ" disabled /></label>
+            <label>Телефон<input type="tel" name="phone" autoComplete="tel" placeholder="+7 (___) ___-__-__" /></label>
+            <label>Задача<textarea name="message" rows={3} placeholder="Кратко опишите объект или вид работ" /></label>
             <button type="submit" className="button" disabled>Отправить заявку</button>
             <p id="form-status">Онлайн-заявки будут доступны после подключения CRM.</p>
           </form>
@@ -370,7 +371,7 @@ function Footer() {
         <div className="footer__main">
           <div>
             <a href="#top" className="brand"><span className="brand__mark" aria-hidden="true">С</span><span>СКСМонт</span></a>
-            <p>Электромонтажные работы в Санкт-Петербурге и Ленинградской области.</p>
+            <p>Электромонтажные, кабельные и сопутствующие работы.</p>
           </div>
           <nav aria-label="Навигация в подвале">
             <span>Разделы</span>
@@ -380,7 +381,7 @@ function Footer() {
             <span>Реквизиты</span><p>ООО «СКСМонт»</p><p>ИНН 7810649251</p><p>ОГРН 1177847041932</p>
           </div>
         </div>
-        <div className="footer__bottom"><span>© {year} ООО «СКСМонт»</span><span>Санкт-Петербург · Ленинградская область</span></div>
+        <div className="footer__bottom"><span>© {year} ООО «СКСМонт»</span><span>Санкт-Петербург и Ленинградская область</span></div>
       </div>
     </footer>
   );
