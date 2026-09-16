@@ -535,7 +535,6 @@ header {
 .inview-group .process-heading > p,
 .inview-group .about__visual,
 .inview-group .about__lead,
-.inview-group .about__note,
 .inview-group .company-details,
 .inview-group .cooperation-grid,
 .inview-group .process-grid,
@@ -549,7 +548,6 @@ header {
 .inview-group.is-visible .process-heading > p,
 .inview-group.is-visible .about__visual,
 .inview-group.is-visible .about__lead,
-.inview-group.is-visible .about__note,
 .inview-group.is-visible .company-details,
 .inview-group.is-visible .cooperation-grid,
 .inview-group.is-visible .process-grid,
@@ -564,7 +562,6 @@ header {
   animation-delay: 120ms;
 }
 
-.inview-group.is-visible .about__note,
 .inview-group.is-visible .contact__bottom {
   animation-delay: 210ms;
 }
@@ -596,7 +593,7 @@ header {
 .service button {
   display: grid;
   width: 100%;
-  grid-template-columns: 4.7rem 1fr auto;
+  grid-template-columns: 1fr auto;
   gap: 1.3rem;
   align-items: start;
   padding: 1.55rem 0;
@@ -605,19 +602,6 @@ header {
   color: inherit;
   cursor: pointer;
   text-align: left;
-}
-
-.service__number {
-  color: rgba(255, 255, 255, 0.14);
-  font-family: var(--display);
-  font-size: 3.5rem;
-  font-weight: 900;
-  line-height: 0.8;
-  transition: color 200ms ease;
-}
-
-.service--active .service__number {
-  color: var(--cobalt);
 }
 
 .service__copy {
@@ -705,25 +689,6 @@ header {
   content: '';
 }
 
-.services-media figcaption {
-  position: absolute;
-  z-index: 2;
-  right: 1rem;
-  bottom: 1rem;
-  left: 1rem;
-  display: flex;
-  justify-content: space-between;
-  color: rgba(255, 255, 255, 0.5);
-  font-family: var(--display);
-  font-size: 0.68rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.services-media figcaption span {
-  color: var(--cobalt-light);
-}
-
 .services-mobile {
   display: none;
 }
@@ -737,7 +702,7 @@ header {
 
 .about__visual {
   position: relative;
-  padding-bottom: 4rem;
+  padding-bottom: 0;
 }
 
 .about__photo {
@@ -761,31 +726,6 @@ header {
   content: '';
 }
 
-.about__photo > span {
-  position: absolute;
-  z-index: 1;
-  right: 1rem;
-  bottom: 1rem;
-  padding: 0.45rem 0.6rem;
-  background: rgba(10, 16, 24, 0.78);
-  color: rgba(255, 255, 255, 0.66);
-  font-family: var(--display);
-  font-size: 0.62rem;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-}
-
-.about__index {
-  position: absolute;
-  right: -0.03em;
-  bottom: -0.03em;
-  color: rgba(10, 16, 24, 0.055);
-  font-family: var(--display);
-  font-size: clamp(8rem, 16vw, 14rem);
-  font-weight: 900;
-  line-height: 0.72;
-}
-
 .about__content {
   padding-top: 1rem;
 }
@@ -797,15 +737,8 @@ header {
   line-height: 1.72;
 }
 
-.about__note {
-  margin: 1rem 0 2.5rem;
-  color: rgba(10, 16, 24, 0.46);
-  font-size: 0.86rem;
-  line-height: 1.65;
-}
-
 .company-details {
-  margin: 0;
+  margin: 2.5rem 0 0;
   border-bottom: 1px solid var(--line-light);
 }
 
@@ -857,17 +790,10 @@ header {
   background: #152235;
 }
 
-.cooperation-grid article > span {
-  color: rgba(255, 255, 255, 0.13);
-  font-family: var(--display);
-  font-size: 4.4rem;
-  font-weight: 900;
-  line-height: 0.8;
-}
-
 .cooperation-grid h3 {
   max-width: 15ch;
-  margin: 4.5rem 0 1rem;
+  margin: 0 0 1rem;
+  padding-right: 3.5rem;
   color: white;
   font-family: var(--display);
   font-size: clamp(1.55rem, 2.3vw, 2.1rem);
@@ -1259,25 +1185,6 @@ header {
     filter: saturate(0.78) contrast(1.05);
   }
 
-  .services-mobile__card figcaption {
-    position: absolute;
-    z-index: 1;
-    right: 0.85rem;
-    bottom: 0.75rem;
-    left: 0.85rem;
-    display: flex;
-    justify-content: space-between;
-    color: rgba(255, 255, 255, 0.62);
-    font-family: var(--display);
-    font-size: 0.56rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .services-mobile__card figcaption span {
-    color: var(--cobalt-light);
-  }
-
   .services-mobile__copy {
     position: relative;
     display: block;
@@ -1285,20 +1192,10 @@ header {
     padding: 1.2rem;
   }
 
-  .services-mobile__copy > span {
-    position: absolute;
-    top: 1.25rem;
-    right: 1.2rem;
-    color: var(--cobalt-light);
-    font-family: var(--display);
-    font-size: 1.05rem;
-    font-weight: 800;
-  }
-
   .services-mobile__copy h3 {
     min-width: 0;
     margin: 0;
-    padding-right: 2.5rem;
+    padding-right: 0;
     color: white;
     font-family: var(--display);
     font-size: clamp(1.35rem, 5.6vw, 1.8rem);
@@ -1541,12 +1438,8 @@ header {
     padding: 1.5rem;
   }
 
-  .cooperation-grid article > span {
-    font-size: 3.4rem;
-  }
-
   .cooperation-grid h3 {
-    margin-top: 2.9rem;
+    margin-top: 0;
   }
 
   .cooperation-grid article > div {
@@ -1637,11 +1530,6 @@ header {
 
   .services-mobile__copy {
     padding: 1rem;
-  }
-
-  .services-mobile__copy > span {
-    top: 1.05rem;
-    right: 1rem;
   }
 
   .footer__main {

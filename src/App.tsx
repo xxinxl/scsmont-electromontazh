@@ -4,54 +4,49 @@ const projectImage = (name: string) => `${import.meta.env.BASE_URL}images/projec
 
 const SERVICES = [
   {
-    num: '01',
     title: 'Электромонтажные работы',
-    desc: 'Состав и объём электромонтажных работ уточняются по проекту, техническому заданию и условиям объекта.',
+    desc: 'Выполняем электромонтажные работы по проекту и техническому заданию.',
     img: projectImage('service-electrical.webp'),
     position: '50% 62%',
   },
   {
-    num: '02',
     title: 'Прокладка кабеля',
-    desc: 'Прокладка кабельных линий. Способ и маршрут согласовываются для каждого объекта.',
+    desc: 'Прокладываем кабельные линии на строительных и промышленных объектах.',
     img: projectImage('service-cable-route.webp'),
     position: '50% 66%',
   },
   {
-    num: '03',
     title: 'Установка муфт',
-    desc: 'Установка кабельных муфт с подбором решения под конкретную задачу и исходные данные.',
+    desc: 'Устанавливаем кабельные муфты для надёжного соединения и оконцевания линий.',
     img: projectImage('service-joints.webp'),
     position: '50% 68%',
   },
   {
-    num: '04',
     title: 'Монтаж подстанций',
-    desc: 'Монтаж подстанций в составе согласованного объёма работ по объекту.',
+    desc: 'Выполняем монтаж подстанций на подготовленных объектах.',
     img: projectImage('service-substation.webp'),
     position: '50% 44%',
   },
   {
-    num: '05',
     title: 'Благоустройство',
-    desc: 'Благоустройство и восстановление территории после выполнения работ.',
+    desc: 'Восстанавливаем территорию после прокладки кабеля и завершения монтажных работ.',
     img: projectImage('service-earthworks.webp'),
     position: '54% 56%',
   },
 ];
 
 const COOPERATION = [
-  { num: '01', title: 'Генподрядчикам', desc: 'Обсудим состав работ, требования к документации и формат участия в проекте.' },
-  { num: '02', title: 'Строительным компаниям', desc: 'Рассмотрим задачи по электромонтажу, кабельным линиям, подстанциям и благоустройству.' },
-  { num: '03', title: 'Заказчикам объектов', desc: 'Уточним исходные данные и подготовим предложение под конкретный объём работ.' },
-  { num: '04', title: 'Поставщикам и партнёрам', desc: 'Открыты к обсуждению сотрудничества по профильным проектам в регионе.' },
+  { title: 'Генподрядчикам', desc: 'Подключаемся к проектам в качестве подрядчика по электромонтажным и кабельным работам.' },
+  { title: 'Строительным компаниям', desc: 'Выполняем электромонтаж, прокладку кабеля, монтаж подстанций и благоустройство.' },
+  { title: 'Заказчикам объектов', desc: 'Принимаем проект или техническое задание и готовим предложение по работам.' },
+  { title: 'Поставщикам и партнёрам', desc: 'Рассматриваем предложения о сотрудничестве по профильным проектам в регионе.' },
 ];
 
 const PROCESS = [
-  { num: '01', title: 'Задача', desc: 'Вы направляете описание объекта, проект или техническое задание.' },
-  { num: '02', title: 'Уточнение', desc: 'Сверяем исходные данные и вопросы, которые влияют на объём работ.' },
-  { num: '03', title: 'Согласование', desc: 'Фиксируем состав работ и условия по конкретному объекту.' },
-  { num: '04', title: 'Реализация', desc: 'Приступаем к работам после согласования всех вводных.' },
+  { title: 'Заявка', desc: 'Вы направляете описание объекта, проект или техническое задание.' },
+  { title: 'Расчёт', desc: 'Определяем состав, объём и стоимость работ.' },
+  { title: 'Договор', desc: 'Фиксируем условия и сроки выполнения работ.' },
+  { title: 'Работы', desc: 'Выходим на объект и выполняем согласованный объём.' },
 ];
 
 const NAV_LINKS = [
@@ -203,8 +198,8 @@ function Services() {
     <section id="services" className="section section--dark">
       <div ref={ref} className={'shell inview-group ' + (visible ? 'is-visible' : '')}>
         <div className="section-intro">
-          <SectionHeading kicker="01 — Услуги" light>Пять направлений.<br />Один подрядчик.</SectionHeading>
-          <p>Точный состав работ определим после получения исходных данных по объекту.</p>
+          <SectionHeading kicker="Услуги" light>Пять направлений.<br />Один подрядчик.</SectionHeading>
+          <p>Комплекс электромонтажных и кабельных работ для объектов в Санкт-Петербурге и Ленинградской области.</p>
         </div>
 
         <div className="services-layout">
@@ -212,9 +207,8 @@ function Services() {
             {SERVICES.map((service, index) => {
               const isActive = active === index;
               return (
-                <article className={'service ' + (isActive ? 'service--active' : '')} key={service.num} role="listitem">
+                <article className={'service ' + (isActive ? 'service--active' : '')} key={service.title} role="listitem">
                   <button type="button" onClick={() => setActive(index)} onMouseEnter={() => setActive(index)} aria-expanded={isActive}>
-                    <span className="service__number">{service.num}</span>
                     <span className="service__copy">
                       <strong>{service.title}</strong>
                       <span className="service__description">{service.desc}</span>
@@ -232,9 +226,8 @@ function Services() {
 
           <div className="services-media" aria-live="polite">
             {SERVICES.map((service, index) => (
-              <figure className={active === index ? 'is-active' : ''} key={service.num}>
+              <figure className={active === index ? 'is-active' : ''} key={service.title}>
                 <img src={service.img} style={{ objectPosition: service.position }} alt={'Фото с объекта: ' + service.title} loading={index === 0 ? 'eager' : 'lazy'} />
-                <figcaption><span>{service.num} / 05</span> Реальный объект</figcaption>
               </figure>
             ))}
           </div>
@@ -243,13 +236,11 @@ function Services() {
         <div className="services-mobile" aria-label="Галерея услуг">
           <div className="services-mobile__track" tabIndex={0}>
             {SERVICES.map((service) => (
-              <article className="services-mobile__card" key={service.num}>
+              <article className="services-mobile__card" key={service.title}>
                 <figure>
                   <img src={service.img} style={{ objectPosition: service.position }} alt={'Фото с объекта: ' + service.title} loading="lazy" />
-                  <figcaption><span>{service.num} / 05</span> Реальный объект</figcaption>
                 </figure>
                 <div className="services-mobile__copy">
-                  <span>{service.num}</span>
                   <h3>{service.title}</h3>
                   <p>{service.desc}</p>
                 </div>
@@ -280,15 +271,12 @@ function About() {
         <div className="about__visual">
           <div className="about__photo">
             <img src={projectImage('about-cable.webp')} alt="Кабель на барабане на объекте" loading="lazy" />
-            <span>Фото с объекта</span>
           </div>
-          <div className="about__index" aria-hidden="true">02</div>
         </div>
 
         <div className="about__content">
-          <SectionHeading kicker="02 — О компании">Только<br />проверенные<br />данные.</SectionHeading>
+          <SectionHeading kicker="О компании">Электромонтаж<br />для объектов<br />региона.</SectionHeading>
           <p className="about__lead">ООО «СКСМонт» выполняет электромонтажные и сопутствующие работы в Санкт-Петербурге и Ленинградской области.</p>
-          <p className="about__note">На сайте представлены реальные фотографии с объектов. Дополнительные сведения и документы предоставим после согласования.</p>
           <dl className="company-details">
             {details.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
           </dl>
@@ -305,13 +293,13 @@ function Cooperation() {
     <section id="cooperation" className="section section--navy">
       <div ref={ref} className={'shell inview-group ' + (visible ? 'is-visible' : '')}>
         <div className="section-intro section-intro--cooperation">
-          <SectionHeading kicker="03 — Сотрудничество" light>Обсудим<br />ваш формат.</SectionHeading>
-          <p>Объём, сроки, документацию и условия согласуем по конкретному запросу.</p>
+          <SectionHeading kicker="Сотрудничество" light>Работаем<br />с бизнесом.</SectionHeading>
+          <p>Берём в работу проекты в Санкт-Петербурге и Ленинградской области.</p>
         </div>
         <div className="cooperation-grid">
           {COOPERATION.map((item) => (
-            <article key={item.num}>
-              <span>{item.num}</span><h3>{item.title}</h3><p>{item.desc}</p><div aria-hidden="true">↗</div>
+            <article key={item.title}>
+              <h3>{item.title}</h3><p>{item.desc}</p><div aria-hidden="true">↗</div>
             </article>
           ))}
         </div>
@@ -327,13 +315,12 @@ function Process() {
     <section className="section section--warm">
       <div ref={ref} className={'shell inview-group ' + (visible ? 'is-visible' : '')}>
         <div className="process-heading">
-          <SectionHeading kicker="04 — Начало работы">От запроса<br />к объекту.</SectionHeading>
-          <p>Последовательность уточняется в зависимости от задачи.</p>
+          <SectionHeading kicker="Начало работы">От заявки<br />к объекту.</SectionHeading>
         </div>
         <div className="process-grid">
-          {PROCESS.map((step) => (
-            <article key={step.num}>
-              <div><span />{step.num}</div><h3>{step.title}</h3><p>{step.desc}</p>
+          {PROCESS.map((step, index) => (
+            <article key={step.title}>
+              <div><span />{index + 1}</div><h3>{step.title}</h3><p>{step.desc}</p>
             </article>
           ))}
         </div>
@@ -349,15 +336,12 @@ function Contact() {
     <section id="contact" className="contact">
       <div className="contact__grid" aria-hidden="true" />
       <div ref={ref} className={'shell contact__content inview-group ' + (visible ? 'is-visible' : '')}>
-        <span className="contact__kicker">05 — Контакты</span>
+        <span className="contact__kicker">Контакты</span>
         <h2>Давайте<br /><em>обсудим</em><br />объект.</h2>
         <div className="contact__bottom">
           <div className="contact__info">
-            <p>Контактные данные будут добавлены после подтверждения.</p>
+            <p>Работаем в Санкт-Петербурге и Ленинградской области.</p>
             <dl>
-              <div><dt>Телефон</dt><dd>Добавим перед публикацией</dd></div>
-              <div><dt>E-mail</dt><dd>Добавим перед публикацией</dd></div>
-              <div><dt>Мессенджер</dt><dd>Добавим перед публикацией</dd></div>
               <div><dt>Регион</dt><dd>Санкт-Петербург и Ленинградская область</dd></div>
             </dl>
           </div>
@@ -368,8 +352,8 @@ function Contact() {
             </div>
             <label>Телефон<input type="tel" name="phone" placeholder="+7 (___) ___-__-__" disabled /></label>
             <label>Задача<textarea name="message" rows={3} placeholder="Кратко опишите объект или вид работ" disabled /></label>
-            <button type="submit" className="button" disabled>Форма подключается</button>
-            <p id="form-status">Форма станет активной, когда появится подтверждённый способ связи.</p>
+            <button type="submit" className="button" disabled>Отправить заявку</button>
+            <p id="form-status">Онлайн-заявки будут доступны после подключения CRM.</p>
           </form>
         </div>
       </div>

@@ -6,10 +6,10 @@
     "image": "/og.png"
   },
   "robots": {
-    "index": false
+    "index": true
   },
   "accessibility": {
-    "addBypassLinks": true,
+    "addBypassLinks": false,
     "ignoreReducedMotion": false
   }
 }
