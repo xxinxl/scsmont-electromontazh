@@ -177,7 +177,11 @@ function Hero() {
         <div className="hero__eyebrow reveal reveal--one">
           <span /> ООО «СКСМонт»
         </div>
-        <h1 className="hero__title reveal reveal--two">Монтаж<br />Кабель<br /><em>Подстанции</em></h1>
+        <h1 className="hero__title hero__title--long reveal reveal--two">
+          <span>Монтаж</span>
+          <span>кабельных линий</span>
+          <em>подстанций</em>
+        </h1>
         <div className="hero__bottom reveal reveal--three">
           <p>Электромонтажные работы, прокладка кабеля, установка муфт, монтаж подстанций и благоустройство.</p>
           <div className="hero__actions">

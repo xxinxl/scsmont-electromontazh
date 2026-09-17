@@ -391,6 +391,16 @@ header {
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.62);
 }
 
+.hero__title--long {
+  max-width: none;
+  font-size: clamp(4rem, 6.5vw, 7.5rem);
+}
+
+.hero__title--long span,
+.hero__title--long em {
+  display: block;
+}
+
 .hero__bottom {
   display: flex;
   max-width: 66rem;
@@ -1455,6 +1465,10 @@ header {
     line-height: 0.82;
   }
 
+  .hero__title--long {
+    font-size: clamp(2.15rem, 9.4vw, 3.2rem);
+  }
+
   .hero__bottom {
     margin-top: 2.5rem;
   }
@@ -1643,6 +1657,10 @@ header {
 @media (max-width: 390px) {
   .hero__title {
     font-size: clamp(2.25rem, 11.7vw, 2.9rem);
+  }
+
+  .hero__title--long {
+    font-size: clamp(2rem, 9vw, 2.75rem);
   }
 
   .section-heading h2 {
