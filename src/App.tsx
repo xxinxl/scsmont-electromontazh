@@ -30,16 +30,29 @@ const SERVICES = [
   {
     title: 'Благоустройство',
     desc: 'Восстанавливаем территорию после прокладки кабеля и завершения монтажных работ.',
-    img: projectImage('service-earthworks.webp'),
-    position: '54% 56%',
+    img: projectImage('service-landscaping-night.webp'),
+    position: '50% 67%',
   },
 ];
 
 const COOPERATION = [
-  { title: 'Генподрядчикам', desc: 'Подключаемся к проектам в качестве подрядчика по электромонтажным и кабельным работам.', img: projectImage('service-substation.webp'), alt: 'Монтаж подстанции на объекте', position: '50% 44%' },
-  { title: 'Строительным компаниям', desc: 'Выполняем электромонтаж, прокладку кабеля, монтаж подстанций и благоустройство.', img: projectImage('service-cable-route.webp'), alt: 'Прокладка кабельной линии на строительном объекте', position: '50% 66%' },
-  { title: 'Заказчикам объектов', desc: 'Принимаем проект или техническое задание и готовим предложение по работам.', img: projectImage('service-electrical.webp'), alt: 'Электромонтажные работы на объекте', position: '50% 62%' },
-  { title: 'Поставщикам и партнёрам', desc: 'Рассматриваем предложения о сотрудничестве по профильным проектам.', img: projectImage('about-cable.webp'), alt: 'Кабель на барабане на объекте', position: '50% 50%' },
+  { title: 'Для генподрядчиков', desc: 'Подключаемся к проектам в качестве подрядчика по электромонтажным и кабельным работам.' },
+  { title: 'Для строительных компаний', desc: 'Выполняем электромонтаж, прокладку кабеля, монтаж подстанций и благоустройство.' },
+  { title: 'Для промышленных предприятий', desc: 'Выполняем электромонтажные и кабельные работы на промышленных объектах по согласованному заданию.' },
+  { title: 'Долгосрочное сотрудничество', desc: 'Рассматриваем регулярные проекты и предложения о сотрудничестве по профильным работам.' },
+];
+
+const PROJECT_PHOTOS = [
+  { name: 'gallery-cable-trench.webp', title: 'Прокладка кабельной линии', alt: 'Кабели в траншее на строительном объекте', position: '50% 62%' },
+  { name: 'gallery-paving-day.webp', title: 'Восстановление покрытия', alt: 'Тротуар с уложенной плиткой после работ', position: '50% 68%' },
+  { name: 'service-landscaping-night.webp', title: 'Ночные работы', alt: 'Работы на городском объекте в ночное время', position: '50% 68%' },
+  { name: 'gallery-cable-terminations.webp', title: 'Монтаж оборудования', alt: 'Кабельные подключения внутри электрооборудования', position: '50% 48%' },
+  { name: 'gallery-mini-excavator.webp', title: 'Земляные работы', alt: 'Экскаватор на участке земляных работ', position: '50% 50%' },
+  { name: 'gallery-conduits.webp', title: 'Подготовка кабельной трассы', alt: 'Трубы для прокладки кабеля на объекте', position: '50% 60%' },
+  { name: 'gallery-landscaped-path.webp', title: 'Благоустройство территории', alt: 'Дорожка и газон на благоустроенной территории', position: '50% 56%' },
+  { name: 'gallery-pavement-wet.webp', title: 'Работы с покрытием', alt: 'Обновлённое покрытие пешеходной зоны', position: '50% 65%' },
+  { name: 'gallery-landscaping-green.webp', title: 'Озеленение', alt: 'Газон и посадки вдоль дороги', position: '50% 60%' },
+  { name: 'gallery-urban-site.webp', title: 'Городской объект', alt: 'Ограждённая рабочая зона рядом с городской дорогой', position: '50% 50%' },
 ];
 
 const PROCESS = [
@@ -53,6 +66,7 @@ const NAV_LINKS = [
   { label: 'Услуги', href: '#services' },
   { label: 'О компании', href: '#about' },
   { label: 'Сотрудничество', href: '#cooperation' },
+  { label: 'Фото работ', href: '#projects' },
   { label: 'Контакты', href: '#contact' },
 ];
 
@@ -289,20 +303,63 @@ function Cooperation() {
   const { ref, visible } = useInView();
 
   return (
-    <section id="cooperation" className="section section--navy">
+    <section id="cooperation" className="section section--warm cooperation">
       <div ref={ref} className={'shell inview-group ' + (visible ? 'is-visible' : '')}>
         <div className="section-intro section-intro--cooperation">
-          <SectionHeading kicker="Сотрудничество" light>Работаем<br />с бизнесом</SectionHeading>
-          <p>Подключаемся к проектам генподрядчиков, строительных компаний и заказчиков объектов.</p>
+          <SectionHeading kicker="Сотрудничество">С кем<br />мы работаем</SectionHeading>
+          <p>Формат работ и условия сотрудничества обсуждаем под задачи объекта.</p>
         </div>
-        <div className="cooperation-grid">
-          {COOPERATION.map((item) => (
+        <div className="cooperation-list">
+          {COOPERATION.map((item, index) => (
             <article key={item.title}>
-              <img className="cooperation-card__image" src={item.img} alt={item.alt} style={{ objectPosition: item.position }} loading="lazy" />
-              <div className="cooperation-card__content"><h3>{item.title}</h3><p>{item.desc}</p></div>
+              <span className="cooperation-list__number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
             </article>
           ))}
         </div>
+        <a href="#contact" className="button cooperation__cta">Обсудить сотрудничество <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  );
+}
+
+function Projects() {
+  const track = useRef<HTMLDivElement>(null);
+  const { ref, visible } = useInView();
+
+  const scrollPhotos = (direction: -1 | 1) => {
+    const element = track.current;
+    if (!element) return;
+    element.scrollBy({ left: direction * element.clientWidth * 0.85, behavior: 'smooth' });
+  };
+
+  return (
+    <section id="projects" className="section section--dark projects">
+      <div ref={ref} className={'shell inview-group ' + (visible ? 'is-visible' : '')}>
+        <div className="section-intro projects__intro">
+          <SectionHeading kicker="Фото с объектов" light>Работа в деталях</SectionHeading>
+          <div className="projects__controls" aria-label="Управление галереей">
+            <span>{PROJECT_PHOTOS.length} фотографий</span>
+            <button type="button" onClick={() => scrollPhotos(-1)} aria-label="Предыдущие фотографии">←</button>
+            <button type="button" onClick={() => scrollPhotos(1)} aria-label="Следующие фотографии">→</button>
+          </div>
+        </div>
+        <div className="projects__track" ref={track} tabIndex={0} aria-label="Фотографии работ. Листайте в стороны">
+          {PROJECT_PHOTOS.map((photo, index) => (
+            <a className="projects__card" href={projectImage(photo.name)} target="_blank" rel="noopener noreferrer" key={photo.name} aria-label={'Открыть фото: ' + photo.title}>
+              <div className="projects__image">
+                <img src={projectImage(photo.name)} alt={photo.alt} style={{ objectPosition: photo.position }} loading="lazy" />
+              </div>
+              <div className="projects__caption">
+                <span>{String(index + 1).padStart(2, '0')} / {PROJECT_PHOTOS.length}</span>
+                <strong>{photo.title}</strong>
+                <span aria-hidden="true">↗</span>
+              </div>
+            </a>
+          ))}
+        </div>
+        <p className="projects__hint">Листайте галерею свайпом или стрелками. Нажмите на фото, чтобы открыть его целиком.</p>
       </div>
     </section>
   );
@@ -400,7 +457,7 @@ export default function App() {
   return (
     <div className="site">
       <Nav scrolled={scrollY > 60} />
-      <main><Hero /><Services /><About /><Cooperation /><Process /><Contact /></main>
+      <main><Hero /><Services /><About /><Cooperation /><Process /><Projects /><Contact /></main>
       <Footer />
       <div className={'mobile-cta ' + (scrollY > 520 ? 'mobile-cta--visible' : '')}>
         <a href="#contact" className="button">Обсудить объект <span>→</span></a>
