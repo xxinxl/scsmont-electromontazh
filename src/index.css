@@ -393,12 +393,16 @@ header {
 
 .hero__title--long {
   max-width: none;
-  font-size: clamp(4rem, 6.5vw, 7.5rem);
+  font-size: clamp(4rem, 5.6vw, 6.5rem);
 }
 
 .hero__title--long span,
 .hero__title--long em {
   display: block;
+}
+
+.hero__title--long > span:nth-child(2) {
+  word-spacing: 0.16em;
 }
 
 .hero__bottom {
@@ -1467,6 +1471,10 @@ header {
 
   .hero__title--long {
     font-size: clamp(2.15rem, 9.4vw, 3.2rem);
+  }
+
+  .hero__title--long > span:nth-child(2) {
+    word-spacing: normal;
   }
 
   .hero__bottom {

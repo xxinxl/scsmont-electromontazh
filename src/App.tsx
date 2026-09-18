@@ -44,13 +44,19 @@ const COOPERATION = [
 
 const PROJECT_PHOTOS = [
   { name: 'gallery-cable-trench.webp', title: 'Прокладка кабельной линии', alt: 'Кабели в траншее на строительном объекте', position: '50% 62%' },
+  { name: 'gallery-trench-prepared.jpg', title: 'Подготовка кабельной трассы', alt: 'Подготовленная траншея для прокладки кабеля', position: '50% 55%' },
   { name: 'gallery-paving-day.webp', title: 'Восстановление покрытия', alt: 'Тротуар с уложенной плиткой после работ', position: '50% 68%' },
   { name: 'service-landscaping-night.webp', title: 'Ночные работы', alt: 'Работы на городском объекте в ночное время', position: '50% 68%' },
   { name: 'gallery-cable-terminations.webp', title: 'Монтаж оборудования', alt: 'Кабельные подключения внутри электрооборудования', position: '50% 48%' },
+  { name: 'gallery-substation-setup.jpg', title: 'Монтаж подстанции', alt: 'Подстанция на подготовленной площадке', position: '50% 52%' },
   { name: 'gallery-mini-excavator.webp', title: 'Земляные работы', alt: 'Экскаватор на участке земляных работ', position: '50% 50%' },
+  { name: 'gallery-excavation-city.jpg', title: 'Работа техники на объекте', alt: 'Экскаватор на строительном объекте', position: '50% 50%' },
   { name: 'gallery-conduits.webp', title: 'Подготовка кабельной трассы', alt: 'Трубы для прокладки кабеля на объекте', position: '50% 60%' },
+  { name: 'gallery-cable-ducts-site.jpg', title: 'Кабельные линии на объекте', alt: 'Подготовка трассы для кабельных линий на стройплощадке', position: '50% 60%' },
+  { name: 'gallery-conduits-assembly.jpg', title: 'Подготовка защитных труб', alt: 'Красные защитные трубы перед укладкой', position: '50% 56%' },
   { name: 'gallery-landscaped-path.webp', title: 'Благоустройство территории', alt: 'Дорожка и газон на благоустроенной территории', position: '50% 56%' },
   { name: 'gallery-pavement-wet.webp', title: 'Работы с покрытием', alt: 'Обновлённое покрытие пешеходной зоны', position: '50% 65%' },
+  { name: 'gallery-path-rebuilt.jpg', title: 'Восстановление пешеходной дорожки', alt: 'Обновлённая пешеходная дорожка вдоль дороги', position: '50% 60%' },
   { name: 'gallery-landscaping-green.webp', title: 'Озеленение', alt: 'Газон и посадки вдоль дороги', position: '50% 60%' },
   { name: 'gallery-urban-site.webp', title: 'Городской объект', alt: 'Ограждённая рабочая зона рядом с городской дорогой', position: '50% 50%' },
 ];
